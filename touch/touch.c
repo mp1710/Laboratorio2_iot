@@ -13,8 +13,10 @@ static touch_pad_t pads[NUM_TOUCH] = {
     TOUCH_PAD_NUM3
 };
 
-// Umbral fijo 
-static const uint32_t threshold = 20000;
+static uint32_t base[NUM_TOUCH];
+static uint32_t threshold[NUM_TOUCH];
+
+#define TOUCH_MARGIN 0.10f   // 10%
 
 void touchpad_init(void)
 {
@@ -29,9 +31,27 @@ void touchpad_init(void)
 
     touch_pad_fsm_start();
 
-    // espera para estabilizar FSM
-    for (volatile int d = 0; d < 3000000; d++);
+    // estabilizar FSM 
+    for (volatile int d = 0; d < 4000000; d++);
 
+    for (int i = 0; i < NUM_TOUCH; i++) {
+
+        uint32_t sum = 0;
+        uint32_t val = 0;
+
+        for (int k = 0; k < 10; k++) {
+            touch_pad_read_raw_data(pads[i], &val);
+            sum += val;
+        }
+
+        base[i] = sum / 10;
+
+        // porcentaje sobre baseline
+        threshold[i] = (uint32_t)(base[i] * (1.0f + TOUCH_MARGIN));
+
+        printf("PAD %d base=%lu threshold=%lu\n",
+               i, base[i], threshold[i]);
+    }
 }
 
 bool touchpad_is_pressed(uint8_t i)
@@ -40,7 +60,8 @@ bool touchpad_is_pressed(uint8_t i)
 
     touch_pad_read_raw_data(pads[i], &val);
 
-    printf("PAD %d val=%lu\n", i, val);
+    printf("PAD %d val=%lu thr=%lu\n",
+           i, val, threshold[i]);
 
-    return val > threshold;
+    return val > threshold[i];
 }
