@@ -61,8 +61,8 @@ bool touchpad_is_pressed(uint8_t i)
 
     touch_pad_read_raw_data(pads[i], &val);
 
-    printf("PAD %d val=%lu thr=%lu\n",
-           i, val, threshold[i]);
+    //printf("PAD %d val=%lu thr=%lu\n",
+           //i, val, threshold[i]);
 
     return val > threshold[i];
 }
