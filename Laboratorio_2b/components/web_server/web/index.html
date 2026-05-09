@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RED PAN</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>PAN HTTP</h1>
+
+        <p class="subtitle">
+            Controla el LED RGB desde la web
+        </p>
+
+        <div class="status-card">
+            <p>
+                Estado:
+                <span id="estado">---</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+
+            <button class="off" onclick="apagarLED()">
+                ⚫ OFF
+            </button>
+
+            <button class="rojo" onclick="setColor('rojo')">
+                🔴 Rojo
+            </button>
+
+            <button class="verde" onclick="setColor('verde')">
+                🟢 Verde
+            </button>
+
+            <button class="azul" onclick="setColor('azul')">
+                🔵 Azul
+            </button>
+
+            <button class="amarillo" onclick="setColor('amarillo')">
+                🟡 Amarillo
+            </button>
+
+            <button class="cyan" onclick="setColor('cyan')">
+                🔵 Cyan
+            </button>
+
+            <button class="magenta" onclick="setColor('magenta')">
+                🟣 Magenta
+            </button>
+
+            <button class="blanco" onclick="setColor('blanco')">
+                ⚪ Blanco
+            </button>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
