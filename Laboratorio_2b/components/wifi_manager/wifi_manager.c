@@ -12,8 +12,8 @@
 #define WIFI_CHANNEL   6
 #define MAX_STA_CONN   4
 
-#define STA_WIFI_SSID      "Pixel_4734"
-#define STA_WIFI_PASS      "pilipili"
+#define STA_WIFI_SSID      "caliope"
+#define STA_WIFI_PASS      "sinlugar"
 
 static const char *TAG = "wifi_ap";
 static void wifi_event_handler(void *arg,
