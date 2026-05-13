@@ -1,6 +1,7 @@
 #include "touch.h"
 #include "driver/touch_pad.h"
 #include "rgb_led.h"
+#include "delay.h"
 #include <stdio.h>
 
 #define NUM_TOUCH 6
@@ -33,7 +34,7 @@ void touchpad_init(void)
     touch_pad_fsm_start();
 
     // estabilizar FSM 
-    for (volatile int d = 0; d < 4000000; d++);
+    delay_ms(500);
 
     for (int i = 0; i < NUM_TOUCH; i++) {
 
