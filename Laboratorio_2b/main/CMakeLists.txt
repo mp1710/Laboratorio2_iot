@@ -7,4 +7,5 @@ idf_component_register(
         wifi_manager
         web_server
         touch
+        delay
 )
