@@ -1,4 +1,5 @@
 #include "touch.h"
+#include "delay.h"
 #include "driver/touch_pad.h"
 #include <stdio.h>
 
@@ -32,7 +33,7 @@ void touchpad_init(void)
     touch_pad_fsm_start();
 
     // estabilizar FSM 
-    for (volatile int d = 0; d < 4000000; d++);
+    delay_ms(500);
 
     for (int i = 0; i < NUM_TOUCH; i++) {
 
