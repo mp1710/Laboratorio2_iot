@@ -5,6 +5,7 @@
 #include "wifi_manager.h"
 #include "web_server.h"
 #include "touch.h"
+#include "delay.h"
 
 #define WIFI_MODE_AP_SELECTED   1
 #define WIFI_MODE_STA_SELECTED  2
@@ -44,7 +45,8 @@ void app_main(void)
 #endif
 
     while (1)
-    {
+    {    
         touchpad_update_led();
+        delay_ms(10);
     }
 }
