@@ -1,10 +1,6 @@
 #include "touch.h"
 #include "rgb_led.h"
-
-void delay()
-{
-    for (volatile int i = 0; i < 2000000; i++);
-}
+#include "delay.h"
 
 void app_main(void)
 {
@@ -21,6 +17,6 @@ void app_main(void)
         else if (touchpad_is_pressed(5)) rgb_led_set_color(255,0,255);
         else rgb_led_off();
 
-        delay();
+        delay_ms(100);
     }
 }
