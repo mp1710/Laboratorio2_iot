@@ -1,5 +1,5 @@
 idf_component_register(
     SRCS "touch.c"
     INCLUDE_DIRS "include"
-    REQUIRES driver rgb_led
+    REQUIRES driver rgb_led delay
 )
