@@ -9,12 +9,13 @@
 
 #define WIFI_MODE_AP_SELECTED   1
 #define WIFI_MODE_STA_SELECTED  2
+#define WIFI_MODE_APSTA_SELECTED 3
 
-// Cambiar acá:
-// AP  -> WIFI_MODE_AP_SELECTED
-// STA -> WIFI_MODE_STA_SELECTED
+// defino red sta
+#define STA_SSID "caliope"
+#define STA_PASS "sinlugar"
 
-#define WIFI_SELECTED_MODE WIFI_MODE_AP_SELECTED
+#define WIFI_SELECTED_MODE WIFI_MODE_APSTA_SELECTED
 
 void app_main(void)
 {
@@ -39,7 +40,12 @@ void app_main(void)
 
 #elif WIFI_SELECTED_MODE == WIFI_MODE_STA_SELECTED
 
-    wifi_init_sta();
+    wifi_init_sta(STA_SSID, STA_PASS);
+    web_server_start();
+
+#elif WIFI_SELECTED_MODE == WIFI_MODE_APSTA_SELECTED
+
+    wifi_init_apsta();
     web_server_start();
 
 #endif
